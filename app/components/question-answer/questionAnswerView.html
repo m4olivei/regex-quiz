@@ -1,0 +1,22 @@
+<h1>Question #{{question.id}}</h1>
+
+<div class="alert alert-success" ng-show="messages.success" ng-bind-html="messages.success"></div>
+<div class="alert alert-danger" ng-show="messages.error" ng-bind-html="messages.error"></div>
+
+<p class="lead">{{question.question}}</p>
+<blockquote>{{question.sampleText}}</blockquote>
+
+<form name="questionAnswer" ng-submit="answerQuestion(question, solution)" novalidate>
+  <div class="form-group">
+    <label for="regex">Regular expression solution</label>
+    <div class="input-group">
+      <div class="input-group-addon">/</div>
+      <input type="text" class="form-control" ng-model="solution.regex" name="regex" id="regex" placeholder="Enter a regular expression" aria-describedby="regex-help" required regex>
+      <div class="input-group-addon">/</div>
+      <input type="text" class="form-control" ng-model="solution.modifiers" placeholder="Optionally specify pattern modifiers" pattern="[igm]*">
+    </div>
+    <div id="regex-help" class="help-block">Enter a regular expression without delimiters in the first field.  Optionally enter pattern modifiers in the second field.  Allowed pattern modifiers are i, g, and m.</div>
+  </div>
+
+  <input type="submit" value="Submit" class="btn btn-primary">
+</form>
